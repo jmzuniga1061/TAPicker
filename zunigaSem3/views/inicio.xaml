@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="zunigaSem3.views.inicio"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="75,33,*"
+          BackgroundColor="White">
+
+        <!-- CABECERA -->
+        <Grid Grid.Row="0"
+              Padding="22,5"
+              ColumnDefinitions="Auto,*,Auto"
+              BackgroundColor="White">
+
+            <Image Grid.Column="0"
+                   Source="sudalogo.png"
+                   WidthRequest="220"
+                   HeightRequest="58"
+                   Aspect="AspectFit"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center" />
+
+            <Label Grid.Column="2"
+                   Text="Portal de Admisiones"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#2874B9"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center" />
+
+        </Grid>
+
+        <!-- BARRA AZUL -->
+        <Grid Grid.Row="1"
+              BackgroundColor="#315493"
+              Padding="22,0">
+
+            <Label Text="Formulario de Matrícula"
+                   FontSize="13"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   VerticalOptions="Center" />
+
+        </Grid>
+
+        <!-- CONTENIDO -->
+        <ScrollView Grid.Row="2">
+
+            <VerticalStackLayout Padding="20,26,20,30"
+                                 Spacing="0"
+                                 HorizontalOptions="Fill">
+
+                <!-- TITULOS -->
+                <Label Text="FASE A - GRADO"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#003F73"
+                       HorizontalOptions="Center" />
+
+                <Label Text="Formulario de registro"
+                       FontSize="12"
+                       TextColor="#444444"
+                       HorizontalOptions="Center"
+                       Margin="0,4,0,0" />
+
+                <Label Text="Complete la siguiente información para realizar su inscripción."
+                       FontSize="11"
+                       TextColor="#444444"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,8" />
+
+                <!-- CUERPO DEL FORMULARIO -->
+                <Grid ColumnDefinitions="*,165"
+                      ColumnSpacing="15"
+                      HorizontalOptions="Center"
+                      MaximumWidthRequest="720">
+
+                    <!-- COLUMNA IZQUIERDA -->
+                    <VerticalStackLayout Grid.Column="0"
+                                         Spacing="18">
+
+                        <!-- DATOS PERSONALES -->
+                        <Border Stroke="#CCCCCC"
+                                StrokeThickness="1"
+                                Padding="0"
+                                MinimumHeightRequest="181">
+
+                            <Grid RowDefinitions="22,*">
+
+                                <Label Grid.Row="0"
+                                       Text="Datos Personales"
+                                       FontSize="11"
+                                       TextColor="#888888"
+                                       Margin="8,1,0,0"
+                                       VerticalOptions="Center" />
+
+                                <VerticalStackLayout Grid.Row="1"
+                                                     Padding="18,3,18,12"
+                                                     Spacing="3">
+
+                                    <!-- IDENTIFICACION -->
+                                    <Grid ColumnDefinitions="108,110,110"
+                                          ColumnSpacing="8"
+                                          HeightRequest="22">
+
+                                        <Label Text="Identificación:"
+                                               FontSize="11"
+                                               TextColor="#444444"
+                                               VerticalOptions="Center" />
+
+                                        <Picker Grid.Column="1"
+                                                Title="CÉDULA"
+                                                FontSize="11"
+                                                TextColor="#333333"
+                                                TitleColor="#333333"
+                                                HeightRequest="28"
+                                                MinimumHeightRequest="28"
+                                                Margin="0"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="Center">
+                                            <Picker.Items>
+                                                <x:String>CÉDULA</x:String>
+                                                <x:String>PASAPORTE</x:String>
+                                            </Picker.Items>
+                                        </Picker>
+
+                                        <Entry Grid.Column="2"
+                                               Placeholder="Número"
+                                               FontSize="11"
+                                               Keyboard="Numeric"
+                                               MaxLength="10"
+                                               TextColor="Black"
+                                               PlaceholderColor="Gray"
+                                               BackgroundColor="White"
+                                               HeightRequest="26"
+                                               MinimumHeightRequest="26"
+                                               Margin="0"
+                                               VerticalOptions="Center"
+                                               ClearButtonVisibility="Never"
+                                               TextColor="#333333" />
+
+                                    </Grid>
+
+                                    <!-- APELLIDOS -->
+                                    <Grid ColumnDefinitions="108,110,110"
+                                          ColumnSpacing="8"
+                                          HeightRequest="22">
+
+                                        <Label Text="Apellidos:"
+                                               FontSize="11"
+                                               TextColor="#444444"
+                                               VerticalOptions="Center" />
+
+                                        <Entry Grid.Column="1"
+                                               Placeholder="Paterno"
+                                               FontSize="11"
+                                               TextChanged="SoloLetras_TextChanged"
+                                               HeightRequest="26"
+                                               TextColor="Black"
+                                               PlaceholderColor="Gray"
+                                               BackgroundColor="White"
+                                               MinimumHeightRequest="26"
+                                               Margin="0"
+                                               VerticalOptions="Center"
+                                               ClearButtonVisibility="Never" />
+
+                                        <Entry Grid.Column="2"
+                                               Placeholder="Materno"
+                                               TextChanged="SoloLetras_TextChanged"
+                                               FontSize="11"
+                                               TextColor="Black"
+                                               PlaceholderColor="Gray"
+                                               BackgroundColor="White"
+                                               HeightRequest="26"
+                                               MinimumHeightRequest="26"
+                                               Margin="0"
+                                               VerticalOptions="Center"
+                                               ClearButtonVisibility="Never" />
+
+                                    </Grid>
+
+                                    <!-- NOMBRES -->
+                                    <Grid ColumnDefinitions="108,*"
+                                          ColumnSpacing="8"
+                                          HeightRequest="22">
+
+                                        <Label Text="Nombres completos:"
+                                               FontSize="11"
+                                               TextColor="#444444"
+                                               VerticalOptions="Center" />
+
+                                        <Entry Grid.Column="1"
+                                               TextChanged="SoloLetras_TextChanged"
+                                               FontSize="11"
+                                               HeightRequest="26"
+                                               TextColor="Black"
+                                               PlaceholderColor="Gray"
+                                               BackgroundColor="White"
+                                               MinimumHeightRequest="26"
+                                               Margin="0"
+                                               VerticalOptions="Center"
+                                               ClearButtonVisibility="Never" />
+
+                                    </Grid>
+
+                                    <!-- TELEFONO -->
+                                    <Grid ColumnDefinitions="108,110,*"
+                                          ColumnSpacing="8"
+                                          HeightRequest="22">
+
+                                        <Label Text="Teléfono personal:"
+                                               FontSize="11"
+                                               TextColor="#444444"
+                                               VerticalOptions="Center" />
+
+                                        <Entry Grid.Column="1"
+                                               Placeholder="________"
+                                            
+                                               Keyboard="Numeric"
+                                               MaxLength="10"
+                                               TextColor="Black"
+                                               PlaceholderColor="Gray"
+                                               BackgroundColor="White"
+                                               FontSize="11"
+                                               HeightRequest="26"
+                                               MinimumHeightRequest="26"
+                                               Margin="0"
+                                               VerticalOptions="Center"
+                                               ClearButtonVisibility="Never" />
+
+                                    </Grid>
+
+                                    <!-- CORREO -->
+                                    <Grid ColumnDefinitions="108,*"
+                                          ColumnSpacing="8"
+                                          HeightRequest="22">
+
+                                        <Label Text="Correo personal:"
+                                               FontSize="11"
+                                               TextColor="#444444"
+                                               VerticalOptions="Center" />
+
+                                        <Entry Grid.Column="1"
+                                               Keyboard="Email"
+                                               FontSize="11"
+                                               HeightRequest="26"
+                                               TextColor="Black"
+                                               PlaceholderColor="Gray"
+                                               BackgroundColor="White"
+                                               MinimumHeightRequest="26"
+                                               Margin="0"
+                                               VerticalOptions="Center"
+                                               ClearButtonVisibility="Never" />
+
+                                    </Grid>
+
+                                    <!-- CONFIRMAR CORREO -->
+                                    <Grid ColumnDefinitions="108,*"
+                                          ColumnSpacing="8"
+                                          HeightRequest="22">
+
+                                        <Label Text="Confirmar correo:"
+                                               FontSize="11"
+                                               TextColor="#444444"
+                                               VerticalOptions="Center" />
+
+                                        <Entry Grid.Column="1"
+                                               Keyboard="Email"
+                                               FontSize="11"
+                                               TextColor="Black"
+                                               PlaceholderColor="Gray"
+                                               BackgroundColor="White"
+                                               HeightRequest="26"
+                                               MinimumHeightRequest="26"
+                                               Margin="0"
+                                               VerticalOptions="Center"
+                                               ClearButtonVisibility="Never" />
+
+                                    </Grid>
+
+                                </VerticalStackLayout>
+
+                            </Grid>
+
+                        </Border>
+
+                        <!-- CARRERA, MODALIDAD Y CAMPUS -->
+                        <Grid ColumnDefinitions="66,*"
+                              RowDefinitions="22,22,22"
+                              ColumnSpacing="0"
+                              RowSpacing="1"
+                              Padding="0">
+
+                            <Label Grid.Row="0"
+                                   Text="Carrera:"
+                                   FontSize="11"
+                                   TextColor="#444444"
+                                   VerticalOptions="Center" />
+
+                            <Picker x:Name="CarreraPicker"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Title="Seleccione..."
+                                    FontSize="11"
+                                    TextColor="#777777"
+                                    TitleColor="#B0B0B0"
+                                    HeightRequest="24"
+                                    MinimumHeightRequest="24"
+                                    Margin="0"
+                                    VerticalOptions="Center" />
+
+                            <Label Grid.Row="1"
+                                   Text="Modalidad:"
+                                   FontSize="11"
+                                   TextColor="#444444"
+                                   VerticalOptions="Center" />
+
+                            <Picker x:Name="ModalidadPicker"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Title="Seleccione..."
+                                    FontSize="11"
+                                    TextColor="#777777"
+                                    TitleColor="#B0B0B0"
+                                    HeightRequest="24"
+                                    MinimumHeightRequest="24"
+                                    Margin="0"
+                                    VerticalOptions="Center" />
+
+                            <Label Grid.Row="2"
+                                   Text="Campus:"
+                                   FontSize="11"
+                                   TextColor="#444444"
+                                   VerticalOptions="Center" />
+
+                            <Picker x:Name="CampusPicker"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Title="Seleccione..."
+                                    FontSize="11"
+                                    TextColor="#777777"
+                                    TitleColor="#B0B0B0"
+                                    HeightRequest="24"
+                                    MinimumHeightRequest="24"
+                                    Margin="0"
+                                    VerticalOptions="Center" />
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                    <!-- COLUMNA DERECHA -->
+                    <VerticalStackLayout Grid.Column="1"
+                                         Spacing="8"
+                                         Margin="0,42,0,0">
+
+                        <!-- INFORMACION -->
+                        <Border BackgroundColor="#0787A5"
+                                Stroke="#0787A5"
+                                StrokeThickness="1"
+                                Padding="10"
+                                MinimumHeightRequest="125">
+
+                            <VerticalStackLayout Spacing="7">
+
+                                <Label Text="Información"
+                                       FontSize="11"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       Margin="0,0,0,3" />
+
+                                <Grid ColumnDefinitions="18,*"
+                                      ColumnSpacing="5">
+
+                                    <Label Text="◉"
+                                           FontSize="17"
+                                           TextColor="White"
+                                           VerticalOptions="Center" />
+
+                                    <Label Grid.Column="1"
+                                           Text="099 648 3605"
+                                           FontSize="10"
+                                           TextColor="White"
+                                           TextDecorations="Underline"
+                                           VerticalOptions="Center" />
+
+                                </Grid>
+
+                                <Grid ColumnDefinitions="18,*"
+                                      ColumnSpacing="5">
+
+                                    <Label Text="☎"
+                                           FontSize="17"
+                                           TextColor="White"
+                                           VerticalOptions="Center" />
+
+                                    <Label Grid.Column="1"
+                                           Text="02 255 5714 - Ext. 101/102"
+                                           FontSize="9"
+                                           TextColor="White"
+                                           VerticalOptions="Center" />
+
+                                </Grid>
+
+                                <Grid ColumnDefinitions="18,*"
+                                      ColumnSpacing="5">
+
+                                    <Label Text="✉"
+                                           FontSize="19"
+                                           TextColor="White"
+                                           VerticalOptions="Center" />
+
+                                    <Label Grid.Column="1"
+                                           Text="its@sudamericano.edu.ec"
+                                           FontSize="8"
+                                           TextColor="White"
+                                           VerticalOptions="Center" />
+
+                                </Grid>
+
+                            </VerticalStackLayout>
+
+                        </Border>
+
+                        <!-- ENLACES -->
+                        <Border Stroke="#0787A5"
+                                StrokeThickness="2"
+                                Padding="9"
+                                MinimumHeightRequest="90">
+
+                            <VerticalStackLayout Spacing="5">
+
+                                <Label Text="Enlaces"
+                                       FontSize="10"
+                                       TextColor="#333333"
+                                       Margin="0,0,0,7" />
+
+                                <Label Text="&gt;&gt; Preguntas Frecuentes"
+                                       FontSize="9"
+                                       TextColor="#333333" />
+
+                                <Label Text="&gt;&gt; Calendario Académico"
+                                       FontSize="9"
+                                       TextColor="#333333" />
+
+                            </VerticalStackLayout>
+
+                        </Border>
+
+                    </VerticalStackLayout>
+
+                </Grid>
+
+                <!-- SEPARADOR -->
+                <BoxView HeightRequest="1"
+                         BackgroundColor="#CCCCCC"
+                         MaximumWidthRequest="530"
+                         HorizontalOptions="Center"
+                         Margin="0,24,0,10" />
+
+                <!-- BOTON -->
+                <Button Text="Enviar Inscripción"
+                        FontSize="9"
+                        TextColor="#555555"
+                        BackgroundColor="White"
+                        BorderColor="#CCCCCC"
+                        BorderWidth="1"
+                        CornerRadius="0"
+                        HeightRequest="25"
+                        WidthRequest="260"
+                        Padding="5,0"
+                        HorizontalOptions="Center" />
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>
